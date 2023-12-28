@@ -1,24 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2023/12/28 16:45:27 by avialle-         ###   ########.fr       */
+/*   Created: 2023/12/28 13:59:02 by avialle-          #+#    #+#             */
+/*   Updated: 2023/12/28 17:34:36 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../include/push_swap.h"
 
-# include "libft/libft.h"
-# include <limits.h>
-# include <stdbool.h>
+void	error(void)
+{
+	write(1, "Error\n,", 6);
+}
 
-int		main(int argc, char **argv);
-void	error(void);
-int		verif(char *argv);
+int	right_char(char c)
+{
+	if (ft_isnum(c) == 0 && c != 32
+		&& c != '-' && c != '+')
+		return (0);
+	return (1);
+}
 
-#endif
+int	verif(char *argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (right_char(argv[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}

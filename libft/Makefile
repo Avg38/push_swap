@@ -26,6 +26,7 @@ SRCS	=	ft_fd/ft_putchar_fd.c \
 			ft_others/ft_isprint.c\
 			ft_others/ft_isdigit.c\
 			ft_others/ft_isalnum.c\
+			ft_others/ft_isnum.c\
 			ft_others/ft_isalpha.c\
 			ft_others/ft_isascii.c\
 			\

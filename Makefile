@@ -2,22 +2,22 @@ NAME	= push_swap
 CC	= gcc
 CFLAGS	= -Wall -Wextra -Werror
 RM	= rm -rf
-SRCS	=	main.c push_swap.c
+SRCS	=	src/push_swap.c src/error.c src/put_in_list.c
 OBJS	=	${SRCS:.c=.o}
 
 all : libft ${NAME}
 
-%.o:	%.c push_swap.h
+%.o:	%.c include/push_swap.h
 	@${CC} ${CFLAGS} -g3 -Ilibft/ -c $< -o $@
 
-${NAME}:	${OBJS} push_swap.h
+${NAME}:	${OBJS} include/push_swap.h
 	${CC} ${CFLAGS} -g3  -o $@ $^ -Llibft/ -lft
 
 fclean : clean
 	${RM} ${NAME}
 
 clean :
-	${RM} *.o
+	${RM} src/*.o
 	${RM} libft/obj
 	${RM} libft/libft.a
 	${RM} push_swap

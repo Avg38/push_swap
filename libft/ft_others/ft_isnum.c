@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 13:48:27 by avialle-          #+#    #+#             */
-/*   Updated: 2023/12/28 16:45:04 by avialle-         ###   ########.fr       */
+/*   Created: 2023/12/28 17:16:59 by avialle-          #+#    #+#             */
+/*   Updated: 2023/12/28 17:17:24 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <fcntl.h>
+#include "../libft.h"
 
-int	main(int argc, char **argv)
+int	ft_isnum(int c)
 {
-	int	i;
-
-	i = 0;
-	if (argc < 2)
-		return (0);
-	while (argv[i])
-	{
-		if (verif(argv[i] == 0))
-			return (error(), NULL)
-	}
-	verif(argv);
-	put_in_table(argv);
-	return (0);
+	return (c >= '0' && c <= '9');
 }
