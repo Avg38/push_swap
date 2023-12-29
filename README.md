@@ -16,7 +16,7 @@ Un vérificateur est également inclus pour valider le tri effectué par push_sw
 ./push_swap 4 2 9 1 5 | ./checker 4 2 9 1 5
 ```
 ## Options
-`-v` : Affiche les étapes du tri.
+`-v` : Affiche les étapes du tri.  
 `-c` : Affiche le nombre total d'instructions utilisées pour trier la pile.
 ## Exemple :
 ```bash
