@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 13:59:02 by avialle-          #+#    #+#             */
-/*   Updated: 2023/12/28 17:34:36 by avialle-         ###   ########.fr       */
+/*   Created: 2023/12/28 13:48:27 by avialle-          #+#    #+#             */
+/*   Updated: 2024/01/05 15:19:15 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	error(void)
+int	main(int argc, char **argv)
 {
-	write(1, "Error\n,", 6);
-}
+	t_stack	*a;
+	t_stack	*b;
 
-int	right_char(char c)
-{
-	if (ft_isnum(c) == 0 && c != 32
-		&& c != '-' && c != '+')
-		return (0);
-	return (1);
-}
-
-int	verif(char *argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i])
+	a = NULL;
+	b = NULL;
+	if (argc == 1 && !(argv[1][0]))
+		return (1);
+	else if (argc == 2)
+		init_stack_a(&a, ft_split(argv[1]), true);
+	else
+		init_stack_a(&a, argv + 1, false);
+	if (!stack_sorted(a))
 	{
-		if (right_char(argv[i]) == 0)
-			return (0);
-		i++;
+		if (size_stack(a) == 2)
+			sa(&a, true);
+		if (size_stack(a) == 2)
+			sort_three(&a, true);
+		else
+			sort_stack(&a, true);
 	}
-	return (1);
+	free_stack(&a);
+	return (0);
 }
