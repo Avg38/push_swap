@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:40:32 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/08 11:11:46 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:33:12 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	add_node(t_stack **stack, int n)
 	return (true);
 }
 
-void	init_stack_a(t_stack **stack, char **argv, bool tab2d)
+void	check_init_stack_a(t_stack **stack, char **argv, bool tab2d)
 {
 	int	n;
 	int	i;

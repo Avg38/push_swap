@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:48:27 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/05 15:19:15 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:33:34 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ int	main(int argc, char **argv)
 	if (argc == 1 && !(argv[1][0]))
 		return (1);
 	else if (argc == 2)
-		init_stack_a(&a, ft_split(argv[1]), true);
+		check_init_stack_a(&a, ft_split(argv[1]), true);
 	else
-		init_stack_a(&a, argv + 1, false);
+		check_init_stack_a(&a, argv + 1, false);
 	if (!stack_sorted(a))
 	{
 		if (size_stack(a) == 2)
 			sa(&a, true);
-		if (size_stack(a) == 2)
-			sort_three(&a, true);
+		if (size_stack(a) == 3)
+			sort_three(a);
 		else
-			sort_stack(&a, true);
+			sort_stack(a, b);
 	}
 	free_stack(&a);
 	return (0);

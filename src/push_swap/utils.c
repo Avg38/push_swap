@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:41:42 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/08 11:13:44 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:16:29 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,50 @@ int	size_stack(t_stack **stack)
 	if (!stack)
 		return (NULL);
 	i = 0;
-	while ((*stack)->next != NULL)
+	while (*stack != NULL)
 	{
-		
+		i++;
+		*stack = (*stack)->next;
+	}
+	return (i);
+}
+
+void	set_median(t_stack **stack)
+{
+	int	i;
+	int	size;
+
+	if (!stack)
+		return ;
+	i = 0;
+	if (size % 2 == 0)
+		i = 1;
+	size = size_stack(stack);
+	while (i <= size / 2 && *stack != NULL)
+	{
+		(*stack)->above_median = true;
+		*stack = (*stack)->next;
+		i++;
+	}
+	while (i < size && *stack != NULL)
+	{
+		(*stack)->above_median = false;
+		*stack = (*stack)->next;
+		i++;
+	}
+}
+
+void	set_index(t_stack **stack)
+{
+	int	i;
+
+	if (!stack)
+		return (NULL);
+	i = 0;
+	while (*stack != NULL)
+	{
+		(*stack)->index = i;
+		i++;
+		*stack = (*stack)->next;
 	}
 }

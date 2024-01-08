@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/08 09:48:17 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:16:07 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_stack
 	int				push_cost;
 	bool			above_median;
 	bool			cheapest;
-	struct s_stack	*target_node;
+	struct s_stack	*target;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -46,14 +46,28 @@ void	rrr(t_stack **stack_a, t_stack **stack_b, bool checker);
 /*------------------------ FUNCTIONS ------------------------*/
 int		main(int argc, char **argv);
 bool	add_node(t_stack **stack, int n);
-void	init_stack_a(t_stack **stack, char **argv, bool tab2d);
+void	check_init_stack_a(t_stack **stack, char **argv, bool tab2d);
 char	*ft_strncpy(char *s1, char *s2, int n);
 int		count_words(char *str);
 char	**ft_split(char *str);
+/*---------------------- ERROR MANAGER ----------------------*/
 bool	error_syntax(char *argv);
 bool	error_dobble(t_stack *stack, int n);
 void	free2d(char **str);
 void	free_stack(t_stack **stack);
-void	init_stack_a(t_stack **stack, char **argv, bool tab2d);
+void	smaller_closest(t_stack *src_node, t_stack **target_stack);
+void	bigger_closest(t_stack *src_node, t_stack **target_stack);
+t_stack	*lst_last(t_stack **stack);
+int		ft_isdigit(char c);
+long	ft_atol(char *argv);
+t_stack	*find_min(t_stack *stack);
+t_stack	*find_max(t_stack *stack);
+void	sort_three(t_stack	**stack);
+bool	stack_sorted(t_stack **stack);
+int		size_stack(t_stack **stack);
+void	set_median(t_stack **stack)
+void	set_index(t_stack **stack);
+void	sort_stack(t_stack **stack_a, t_stack **stack_b);
+void	init_stacks(t_stack **stack_a, t_stack **stack_b, char which_stack);
 
 #endif
