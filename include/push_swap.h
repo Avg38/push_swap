@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/05 15:48:38 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/08 09:48:17 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-/*------------------------ COMMANDES ------------------------*/
+/*------------------------ COMMANDS ------------------------*/
 void	sa(t_stack **stack_a, bool checker);
 void	sb(t_stack **stack_b, bool checker);
 void	ss(t_stack **stack_a, t_stack **stack_b, bool checker);
@@ -43,7 +43,7 @@ void	rra(t_stack **stack_a, bool checker);
 void	rrb(t_stack **stack_b, bool checker);
 void	rrr(t_stack **stack_a, t_stack **stack_b, bool checker);
 
-/*------------------------ FONCTIONS ------------------------*/
+/*------------------------ FUNCTIONS ------------------------*/
 int		main(int argc, char **argv);
 bool	add_node(t_stack **stack, int n);
 void	init_stack_a(t_stack **stack, char **argv, bool tab2d);
