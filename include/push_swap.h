@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/08 15:16:07 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:45:40 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_stack	*find_max(t_stack *stack);
 void	sort_three(t_stack	**stack);
 bool	stack_sorted(t_stack **stack);
 int		size_stack(t_stack **stack);
-void	set_median(t_stack **stack)
+void	set_median(t_stack **stack);
 void	set_index(t_stack **stack);
 void	sort_stack(t_stack **stack_a, t_stack **stack_b);
 void	init_stacks(t_stack **stack_a, t_stack **stack_b, char which_stack);

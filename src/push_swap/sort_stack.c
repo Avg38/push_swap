@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:51:29 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/08 15:55:59 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:24:35 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, char which_stack)
 		while (*stack_b != NULL)
 		{
 			bigger_closest(*stack_b, stack_a);
-			set_push_cost(stack_b, stack_a);
+			set_push_cost(*stack_b, stack_a);
 			*stack_b = (*stack_b)->next;
 		}
 	}
