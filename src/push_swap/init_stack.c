@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:40:32 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/12 15:45:08 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:11:37 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ bool	add_node(t_stack **stack, int n)
 {
 	t_stack	*new_node;
 	t_stack	*last_node;
+	t_stack	*tmp;
 
 	if (!stack)
 		return (false);
+	tmp = *stack;
 	new_node = (t_stack *)malloc(1 * sizeof(t_stack));
 	if (!new_node)
 		return (false);
