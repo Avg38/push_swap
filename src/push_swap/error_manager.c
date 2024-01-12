@@ -6,11 +6,11 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:59:02 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/05 14:44:26 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:28:31 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
 bool	error_syntax(char *argv)
 {
@@ -20,20 +20,23 @@ bool	error_syntax(char *argv)
 	if (argv[i] == '-' || argv[i] == '+')
 		i++;
 	while (argv[i])
+	{
 		if (!ft_isdigit(argv[i]))
 			return (true);
+		i++;
+	}
 	return (false);
 }
 
-bool	error_dobble(t_stack *stack, int n)
+bool	error_dobble(t_stack **stack, int n)
 {
 	if (!stack)
 		return (false);
-	while (stack)
+	while (*stack)
 	{
-		if (stack->nb == n)
+		if ((*stack)->nb == n)
 			return (true);
-		stack = stack->next;
+		*stack = (*stack)->next;
 	}
 	return (false);
 }

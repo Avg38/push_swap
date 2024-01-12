@@ -1,25 +1,38 @@
-NAME	= push_swap
-CC	= gcc
-CFLAGS	= -Wall -Wextra -Werror
-RM	= rm -rf
-SRCS	=	src/push_swap.c src/error.c src/put_in_list.c
-OBJS	=	${SRCS:.c=.o}
+NAME = push_swap
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -rf
+SRCS =	src/push_swap/main.c \
+		src/push_swap/error_manager.c \
+		src/push_swap/init_stack.c \
+		src/push_swap/set_stacks.c \
+		src/push_swap/sort_stack.c \
+		src/push_swap/utils.c \
+		src/push_swap/move.c \
+		src/commands/push.c \
+		src/commands/reverse_rotate.c \
+		src/commands/rotate.c \
+		src/commands/swap.c
+OBJS = $(SRCS:.c=.o)
 
-all : ${NAME}
+all: obj $(NAME)
 
-%.o:	%.c include/push_swap.h
-	@${CC} ${CFLAGS} -g3 -c $< -o $@
+obj/%.o: src/%.c include/push_swap.h
+	@$(CC) $(CFLAGS) -g3 -c $< -o $@
 
-${NAME}:	${OBJS} include/push_swap.h
-	${CC} ${CFLAGS} -g3  -o $@ $^ -lft
+$(NAME): $(OBJS) include/push_swap.h
+	@$(CC) $(CFLAGS) -g3 -o $@ $^
+	@mv ${OBJS} obj/
 
-fclean : clean
-	${RM} ${NAME}
+obj:
+	@mkdir -p obj
 
-clean :
-	${RM} src/*.o
-	${RM} push_swap
+clean:
+	$(RM) obj
 
-re : fclean all
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
 
 .PHONY: all clean fclean re

@@ -6,13 +6,22 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:41:42 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/08 15:16:29 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:43:28 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-t_stack	*lst_last(t_stack **stack)
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		write(1, &str[i++], 1);
+}
+
+t_stack	*find_last(t_stack **stack)
 {
 	t_stack	*tmp;
 
@@ -57,7 +66,7 @@ t_stack	*find_min(t_stack *stack)
 	int		min;
 
 	if (!stack)
-		reutrn (NULL);
+		return (NULL);
 	min = INT_MAX;
 	while (stack != NULL)
 	{
@@ -77,7 +86,7 @@ t_stack	*find_max(t_stack *stack)
 	int		max;
 
 	if (!stack)
-		reutrn (NULL);
+		return (NULL);
 	max = INT_MIN;
 	while (stack != NULL)
 	{
@@ -89,6 +98,19 @@ t_stack	*find_max(t_stack *stack)
 		stack = stack->next;
 	}
 	return (node_max);
+}
+
+t_stack	*find_cheapest(t_stack **stack)
+{
+	if (!stack)
+		return (NULL);
+	while (*stack != NULL)
+	{
+		if ((*stack)->cheapest == true)
+			return (*stack);
+		*stack = (*stack)->next;
+	}
+	return (NULL);
 }
 
 void	sort_three(t_stack	**stack)
@@ -123,7 +145,7 @@ int	size_stack(t_stack **stack)
 	int	i;
 
 	if (!stack)
-		return (NULL);
+		return (0);
 	i = 0;
 	while (*stack != NULL)
 	{
@@ -141,9 +163,9 @@ void	set_median(t_stack **stack)
 	if (!stack)
 		return ;
 	i = 0;
+	size = size_stack(stack);
 	if (size % 2 == 0)
 		i = 1;
-	size = size_stack(stack);
 	while (i <= size / 2 && *stack != NULL)
 	{
 		(*stack)->above_median = true;
@@ -163,7 +185,7 @@ void	set_index(t_stack **stack)
 	int	i;
 
 	if (!stack)
-		return (NULL);
+		return ;
 	i = 0;
 	while (*stack != NULL)
 	{

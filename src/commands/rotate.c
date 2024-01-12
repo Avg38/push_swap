@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:08:14 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/05 11:16:09 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:22:36 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	rotate(t_stack **stack)
 
 	if (!(*stack) || !(*stack)->next)
 		return ;
-	first = stack;
-	stack = first->next;
-	last = lst_last(stack);
+	first = *stack;
+	*stack = first->next;
+	last = find_last(stack);
 	last->next = first;
 	first->next = NULL;
 }

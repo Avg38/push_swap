@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:40:32 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/08 13:33:12 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:45:08 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 bool	add_node(t_stack **stack, int n)
 {
-	t_stack	*last;
 	t_stack	*new_node;
+	t_stack	*last_node;
 
 	if (!stack)
 		return (false);
@@ -28,8 +28,8 @@ bool	add_node(t_stack **stack, int n)
 		*stack = new_node;
 	else
 	{
-		last = lst_last(*stack);
-		last->next = new_node;
+		last_node = find_last(stack);
+		last_node->next = new_node;
 	}
 	return (true);
 }
@@ -43,14 +43,14 @@ void	check_init_stack_a(t_stack **stack, char **argv, bool tab2d)
 	while (argv[i])
 	{
 		if (error_syntax(argv[i]))
-			free_errors(stack, argv, tab2d);
+			free_errors(stack, argv, "Syntax error.", tab2d);
 		n = ft_atol(argv[i]);
 		if (n < INT_MIN || n > INT_MAX)
-			free_errors(stack, argv, tab2d);
+			free_errors(stack, argv, "Not bitween INT_MIN and INT_MAX.", tab2d);
 		if (error_dobble(stack, n))
-			free_errors(stack, argv, tab2d);
-		if (!add_node(stack, argv[i]))
-			free_errors(stack, argv, tab2d);
+			free_errors(stack, argv, "A value is in double.", tab2d);
+		if (!add_node(stack, n))
+			free_errors(stack, argv, "Add node is not working.", tab2d);
 		i++;
 	}
 	if (tab2d)

@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:51:29 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/11 13:24:35 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:44:16 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
 	int	len_a;
 
-	len_a = size_stack(&stack_a);
-	if (len_a-- > 3 && !stack_sorted(*stack_a))
+	len_a = size_stack(stack_a);
+	if (len_a-- > 3 && !stack_sorted(stack_a))
 		pb(stack_a, stack_b, false);
-	if (len_a-- > 3 && !stack_sorted(*stack_a))
+	if (len_a-- > 3 && !stack_sorted(stack_a))
 		pb(stack_a, stack_b, false);
 	while (len_a-- > 3)
 	{
@@ -45,7 +45,8 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, char which_stack)
 		while (*stack_a != NULL)
 		{
 			smaller_closest(*stack_a, stack_b);
-			set_push_cost(*stack_a, stack_b);
+			set_push_cost(*stack_a, stack_b, find_last(stack_a)->index);
+			set_cheapest(stack_a);
 			*stack_a = (*stack_a)->next;
 		}
 	}
@@ -54,7 +55,8 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, char which_stack)
 		while (*stack_b != NULL)
 		{
 			bigger_closest(*stack_b, stack_a);
-			set_push_cost(*stack_b, stack_a);
+			set_push_cost(*stack_b, stack_a, find_last(stack_b)->index);
+			set_cheapest(stack_b);
 			*stack_b = (*stack_b)->next;
 		}
 	}

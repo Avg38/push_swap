@@ -6,18 +6,18 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:53:08 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/11 14:34:41 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:44:06 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
 void	smaller_closest(t_stack *src_node, t_stack **target_stack)
 {
 	int	nbr;
 
 	if (!src_node || !target_stack)
-		return (NULL);
+		return ;
 	nbr = INT_MIN;
 	while (*target_stack != NULL)
 	{
@@ -36,7 +36,7 @@ void	bigger_closest(t_stack *src_node, t_stack **target_stack)
 	int	nbr;
 
 	if (!src_node || !target_stack)
-		return (NULL);
+		return ;
 	nbr = INT_MAX;
 	while (*target_stack != NULL)
 	{
@@ -67,11 +67,33 @@ void	set_push_cost(t_stack *src_node, t_stack **target_stack, int index_last_nod
 	if (src_node->target->index == true)
 		j = src_node->target->index;
 	else
-		j = lst_last(target_stack)->index - src_node->index;
+		j = find_last(target_stack)->index - src_node->index;
 	if (src_node->above_median != src_node->target->above_median)
 		src_node->push_cost = i + j;
 	else if (i >= j && src_node->above_median == src_node->target->above_median)
 		src_node->push_cost = i;
 	else
 		src_node->push_cost = j;
+}
+
+void	set_cheapest(t_stack **stack)
+{
+	t_stack	*tmp;
+	int		tmp_cost;
+
+	if (!stack)
+		return ;
+	tmp = *stack;
+	tmp_cost = INT_MAX;
+	while (*stack != NULL)
+	{
+		(*stack)->cheapest = false;
+		if ((*stack)->push_cost < tmp_cost)
+		{
+			tmp = *stack;
+			tmp_cost = (*stack)->push_cost;
+		}
+		*stack = (*stack)->next;
+	}
+	tmp->cheapest = true;
 }
