@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:41:42 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 17:15:50 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:25:05 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,7 @@ void	display_stack(t_stack **stack)
 	cur = *stack;
 	while (!cur)
 	{
+		ft_printf("a");
 		ft_printf("nb = %d index = %d push_cost = %d above_median = %d cheapest = %d\n", cur->nb, cur->index, cur->push_cost, cur->above_median, cur->cheapest);
 		cur = cur->next;
 	}
