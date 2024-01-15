@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/12 14:43:40 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:49:42 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,17 @@ t_stack	*find_min(t_stack *stack);
 t_stack	*find_max(t_stack *stack);
 t_stack	*find_cheapest(t_stack **stack);
 void	sort_three(t_stack	**stack);
-bool	stack_sorted(t_stack **stack);
-int		size_stack(t_stack **stack);
+bool	stack_sorted(t_stack *stack);
+int		size_stack(t_stack *stack);
 void	set_median(t_stack **stack);
 void	set_index(t_stack **stack);
 void	sort_stack(t_stack **stack_a, t_stack **stack_b);
-void	init_stacks(t_stack **stack_a, t_stack **stack_b, char which_stack);
+void	set_stacks(t_stack **stack_a, t_stack **stack_b, char which_stack);
 void	set_push_cost(t_stack *src_node, t_stack **target_stack, int index_last_node);
 void	set_cheapest(t_stack **stack);
 void	ft_putstr(char *str);
 void	move(t_stack **stack_a, t_stack **stack_b, t_stack *node_src, bool above_median);
 void	move_a_to_b(t_stack **stack_a, t_stack **stack_b);
 void	move_b_to_a(t_stack **stack_a, t_stack **stack_b);
-
+void	min_on_top(t_stack **stack_a);
 #endif

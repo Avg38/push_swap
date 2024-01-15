@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:08:08 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/12 15:22:31 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:37:43 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@ void	reverse_rotate(t_stack **stack)
 	first = *stack;
 	*stack = first->next;
 	last = find_last(stack);
-	if (last == NULL)
+	if (!last)
 		return ;
 	last->next = first;
-	while (last->next != first)
-		last = last->next;
-	last->next = NULL;
+	last->next->next = NULL;
 }
 
 void	rra(t_stack **stack_a, bool checker)

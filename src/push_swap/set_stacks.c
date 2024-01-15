@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:53:08 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/12 14:44:06 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:18:33 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,41 @@
 void	smaller_closest(t_stack *src_node, t_stack **target_stack)
 {
 	int	nbr;
+	t_stack	*current;
 
 	if (!src_node || !target_stack)
 		return ;
 	nbr = INT_MIN;
-	while (*target_stack != NULL)
+	current = *target_stack;
+	while (current != NULL)
 	{
-		if ((*target_stack)->nb < src_node->nb && (*target_stack)->nb > nbr)
+		if (current->nb < src_node->nb && current->nb > nbr)
 		{
-			nbr = (*target_stack)->nb;
-			src_node->target = *target_stack;
+			nbr = current->nb;
+			src_node->target = current;
 		}
-		*target_stack = (*target_stack)->next;
+		current = current->next;
 	}
 	if (nbr == INT_MIN)
 		src_node->target = find_max(*target_stack);
 }
 void	bigger_closest(t_stack *src_node, t_stack **target_stack)
 {
-	int	nbr;
+	int		nbr;
+	t_stack	*current;
 
 	if (!src_node || !target_stack)
 		return ;
 	nbr = INT_MAX;
-	while (*target_stack != NULL)
+	current = *target_stack;
+	while (current != NULL)
 	{
-		if ((*target_stack)->nb > src_node->nb && (*target_stack)->nb < nbr)
+		if (current->nb > src_node->nb && current->nb < nbr)
 		{
-			nbr = (*target_stack)->nb;
-			src_node->target = *target_stack;
+			nbr = current->nb;
+			src_node->target = current;
 		}
-		*target_stack = (*target_stack)->next;
+		current = current->next;
 	}
 	if (nbr == INT_MAX)
 		src_node->target = find_min(*target_stack);

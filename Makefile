@@ -4,6 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 SRCS =	src/push_swap/main.c \
 		src/push_swap/error_manager.c \
+		src/push_swap/ft_split.c \
 		src/push_swap/init_stack.c \
 		src/push_swap/set_stacks.c \
 		src/push_swap/sort_stack.c \

@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:59:02 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/12 14:28:31 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:26:35 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,16 @@ bool	error_syntax(char *argv)
 
 bool	error_dobble(t_stack **stack, int n)
 {
+	t_stack	*current;
+
 	if (!stack)
 		return (false);
-	while (*stack)
+	current = *stack;
+	while (current)
 	{
-		if ((*stack)->nb == n)
+		if (current->nb == n)
 			return (true);
-		*stack = (*stack)->next;
+		current = current->next;
 	}
 	return (false);
 }
@@ -62,7 +65,7 @@ void	free_stack(t_stack **stack)
 	if (!(*stack))
 		return ;
 	current = *stack;
-	while (tmp->next != NULL)
+	while (current->next != NULL)
 	{
 		tmp = current->next;
 		free(current);

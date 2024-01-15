@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:40:32 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/12 17:11:37 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:31:40 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ bool	add_node(t_stack **stack, int n)
 {
 	t_stack	*new_node;
 	t_stack	*last_node;
-	t_stack	*tmp;
 
 	if (!stack)
 		return (false);
-	tmp = *stack;
 	new_node = (t_stack *)malloc(1 * sizeof(t_stack));
 	if (!new_node)
 		return (false);
@@ -36,84 +34,28 @@ bool	add_node(t_stack **stack, int n)
 	return (true);
 }
 
-void	check_init_stack_a(t_stack **stack, char **argv, bool tab2d)
+void	check_init_stack_a(t_stack **stack, char **av, bool tab2d)
 {
-	int	n;
-	int	i;
+	long	n;
+	int		i;
+	t_stack	*head;
 
 	i = 0;
-	while (argv[i])
+	head = NULL;
+	while (av[i])
 	{
-		if (error_syntax(argv[i]))
-			free_errors(stack, argv, "Syntax error.", tab2d);
-		n = ft_atol(argv[i]);
+		if (error_syntax(av[i]))
+			free_errors(&head, av, "Syntax error.", tab2d);
+		n = ft_atol(av[i]);
 		if (n < INT_MIN || n > INT_MAX)
-			free_errors(stack, argv, "Not bitween INT_MIN and INT_MAX.", tab2d);
-		if (error_dobble(stack, n))
-			free_errors(stack, argv, "A value is in double.", tab2d);
-		if (!add_node(stack, n))
-			free_errors(stack, argv, "Add node is not working.", tab2d);
+			free_errors(&head, av, "Not bitween INT_MIN and INT_MAX.", tab2d);
+		if (error_dobble(&head, n))
+			free_errors(&head, av, "A value is in double.", tab2d);
+		if (!add_node(&head, (int)n))
+			free_errors(&head, av, "Add node is not working.", tab2d);
 		i++;
 	}
 	if (tab2d)
-		free2d(argv);
-}
-
-char	*ft_strncpy(char *s1, char *s2, int n)
-{
-	int	i;
-
-	i = -1;
-	while (++i < n && s2[i])
-		s1[i] = s2[i];
-	s1[i] = 0;
-	return (s1);
-}
-
-int	count_words(char *str)
-{
-	int	i;
-	int	wc;
-
-	i = 0;
-	wc = 0;
-	while (str[i])
-	{
-		while (str[i] && (str[i] == ' ' || str[i] == '\t'))
-			i++;
-		if (str[i])
-			wc++;
-		while (str[i] && (str[i] != ' ' && str[i] != '\t'))
-			i++;
-	}
-	return (wc);
-}
-
-char	**ft_split(char *str)
-{
-	int		i;
-	int		j;
-	int		k;
-	int		wc;
-	char	**split;
-
-	wc = count_words(str);
-	split = malloc((wc + 1) * sizeof(char *));
-	i = 0;
-	k = 0;
-	while (str[i])
-	{
-		while (str[i] && (str[i] == ' ' || str[i] == '\t'))
-			i++;
-		j = i;
-		while (str[i] && (str[i] != ' ' && str[i] != '\t'))
-			i++;
-		if (i > j)
-		{
-			split[k] = (char *)malloc(sizeof(char) * ((i - j) + 1));
-			ft_strncpy(split[k++], &str[j], i - j);
-		}
-	}
-	split[k] = NULL;
-	return (split);
+		free2d(av);
+	*stack = head;
 }

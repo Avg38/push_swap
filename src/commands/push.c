@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:08:12 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/12 11:31:12 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:35:57 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	push_node(t_stack **dest, t_stack **src)
 	if (!(*src))
 		return ;
 	node_src = *src;
-	*src = (*src)->next;
+	*src = node_src->next;
 	node_src->next = *dest;
 	*dest = node_src;
 }

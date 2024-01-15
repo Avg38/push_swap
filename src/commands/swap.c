@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:14:28 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/05 11:35:27 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:23:44 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,16 @@ void	swap_node(t_stack **stack)
 		return ;
 	first = *stack;
 	*stack = first->next;
-	first->next = (*stack)->next;
-	(*stack)->next = first;
+	if ((*stack)->next)
+	{
+		first->next = (*stack)->next;
+		(*stack)->next = first;
+	}
+	else
+	{
+		first->next = NULL;
+		(*stack)->next = first;
+	}
 }
 
 void	sa(t_stack **stack_a, bool checker)
