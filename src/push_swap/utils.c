@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:41:42 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 13:48:29 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:15:50 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ t_stack	*find_max(t_stack *stack)
 
 t_stack	*find_cheapest(t_stack **stack)
 {
-	if (!stack)
+	if (!stack || !(*stack))
 		return (NULL);
 	while (*stack != NULL)
 	{
@@ -116,17 +116,22 @@ t_stack	*find_cheapest(t_stack **stack)
 void	sort_three(t_stack	**stack)
 {
 	t_stack	*max;
+	t_stack	*cur;
 
-	if (!stack)
+	cur = *stack;
+	if (!stack || !cur)
 		return ;
 	max = find_max(*stack);
+	display_stack(stack);
 	if (*stack == max)
 		ra(stack, false);
-	else if ((*stack)->next == max)
+	else if (cur->next == max)
 		rra(stack, false);
-	if ((*stack)->nb > (*stack)->next->nb)
+	display_stack(stack);
+	if (cur->nb > cur->next->nb)
 		sa(stack, false);
 }
+
 bool	stack_sorted(t_stack *stack)
 {
 	t_stack	*current;
@@ -166,12 +171,10 @@ void	set_median(t_stack **stack)
 
 	if (!stack)
 		return ;
-	i = 0;
+	i = 1;
 	current = *stack;
 	size = size_stack(*stack);
-	if (size % 2 == 0)
-		i = 1;
-	while (i <= size / 2 && *stack != NULL)
+	while (i < size / 2 && current != NULL)
 	{
 		current->above_median = true;
 		current = current->next;
@@ -217,5 +220,17 @@ void	min_on_top(t_stack **stack_a)
 			ra(stack_a, false);
 		else
 			rra(stack_a, false);
+	}
+}
+
+void	display_stack(t_stack **stack)
+{
+	t_stack *cur;
+
+	cur = *stack;
+	while (!cur)
+	{
+		ft_printf("nb = %d index = %d push_cost = %d above_median = %d cheapest = %d\n", cur->nb, cur->index, cur->push_cost, cur->above_median, cur->cheapest);
+		cur = cur->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:51:29 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 14:21:34 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:13:52 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 	int	len_a;
 
 	len_a = size_stack(*stack_a);
+	display_stack(stack_a);
 	if (len_a-- > 3 && !stack_sorted(*stack_a))
 		pb(stack_a, stack_b, false);
 	if (len_a-- > 3 && !stack_sorted(*stack_a))
 		pb(stack_a, stack_b, false);
-	while (len_a-- > 3 && stack_sorted(*stack_a))
+	while (len_a-- > 3 && !stack_sorted(*stack_a))
 	{
 		set_stacks(stack_a, stack_b, 'a');
 		move_a_to_b(stack_a, stack_b);
 	}
+	display_stack(stack_a); //
 	sort_three(stack_a);
 	while (*stack_b)
 	{

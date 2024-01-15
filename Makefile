@@ -10,6 +10,8 @@ SRCS =	src/push_swap/main.c \
 		src/push_swap/sort_stack.c \
 		src/push_swap/utils.c \
 		src/push_swap/move.c \
+		src/push_swap/ft_printf1.c \
+		src/push_swap/ft_printf2.c \
 		src/commands/push.c \
 		src/commands/reverse_rotate.c \
 		src/commands/rotate.c \

@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:53:08 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 14:18:33 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:19:38 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,58 @@
 
 void	smaller_closest(t_stack *src_node, t_stack **target_stack)
 {
-	int	nbr;
+	int		nbr;
 	t_stack	*current;
+	t_stack	*first_target_stack;
 
 	if (!src_node || !target_stack)
 		return ;
-	nbr = INT_MIN;
-	current = *target_stack;
-	while (current != NULL)
+	first_target_stack = *target_stack;
+	while (src_node != NULL)
 	{
-		if (current->nb < src_node->nb && current->nb > nbr)
+		current = first_target_stack;
+		nbr = INT_MIN;
+		while (current != NULL)
 		{
-			nbr = current->nb;
-			src_node->target = current;
+			if (current->nb < src_node->nb && current->nb > nbr)
+			{
+				nbr = current->nb;
+				src_node->target = current;
+			}
+			current = current->next;
 		}
-		current = current->next;
+		if (nbr == INT_MIN)
+			src_node->target = find_max(*target_stack);
+		src_node = src_node->next;
 	}
-	if (nbr == INT_MIN)
-		src_node->target = find_max(*target_stack);
 }
+
 void	bigger_closest(t_stack *src_node, t_stack **target_stack)
 {
 	int		nbr;
 	t_stack	*current;
+	t_stack	*first_target_stack;
 
 	if (!src_node || !target_stack)
 		return ;
-	nbr = INT_MAX;
-	current = *target_stack;
-	while (current != NULL)
+	first_target_stack = *target_stack;
+	while (src_node != NULL)
 	{
-		if (current->nb > src_node->nb && current->nb < nbr)
+		nbr = INT_MAX;
+		current = first_target_stack;
+		while (current != NULL)
 		{
-			nbr = current->nb;
-			src_node->target = current;
+			if (current->nb > src_node->nb && current->nb < nbr)
+			{
+				nbr = current->nb;
+				src_node->target = current;
+			}
+			current = current->next;
 		}
-		current = current->next;
+		if (nbr == INT_MAX)
+			src_node->target = find_min(*target_stack);
+		src_node = src_node->next;
 	}
-	if (nbr == INT_MAX)
-		src_node->target = find_min(*target_stack);
 }
 
 void	set_push_cost(t_stack *src_node, t_stack **target_stack, int index_last_node)
@@ -83,21 +96,23 @@ void	set_push_cost(t_stack *src_node, t_stack **target_stack, int index_last_nod
 void	set_cheapest(t_stack **stack)
 {
 	t_stack	*tmp;
+	t_stack	*current;
 	int		tmp_cost;
 
 	if (!stack)
 		return ;
 	tmp = *stack;
 	tmp_cost = INT_MAX;
-	while (*stack != NULL)
+	current = *stack;
+	while (current != NULL)
 	{
-		(*stack)->cheapest = false;
-		if ((*stack)->push_cost < tmp_cost)
+		current->cheapest = false;
+		if (current->push_cost < tmp_cost)
 		{
 			tmp = *stack;
-			tmp_cost = (*stack)->push_cost;
+			tmp_cost = current->push_cost;
 		}
-		*stack = (*stack)->next;
+		current = current->next;
 	}
 	tmp->cheapest = true;
 }

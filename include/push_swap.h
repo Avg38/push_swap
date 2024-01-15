@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 13:49:42 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:21:54 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdarg.h>
 
 /*------------------------ STRUCTURE ------------------------*/
 typedef struct s_stack
@@ -45,6 +46,16 @@ void	rra(t_stack **stack_a, bool checker);
 void	rrb(t_stack **stack_b, bool checker);
 void	rrr(t_stack **stack_a, t_stack **stack_b, bool checker);
 
+/*------------------------ FT_PRINTF ------------------------*/
+void	ft_print_ptr(unsigned long long addr, size_t *len);
+void	ft_print_nbr(int nb, size_t *len);
+void	ft_print_hexa(unsigned int nb, char *base, size_t *len);
+void	ft_print_unsigned(unsigned int nb, size_t *len);
+void	ft_print_char(int c, size_t *len);
+void	ft_print_str(char *str, size_t *len);
+void	len_var(va_list args, const char c, size_t *len);
+int		ft_printf(const char *str, ...);
+
 /*------------------------ FUNCTIONS ------------------------*/
 int		main(int argc, char **argv);
 bool	add_node(t_stack **stack, int n);
@@ -52,6 +63,7 @@ void	check_init_stack_a(t_stack **stack, char **argv, bool tab2d);
 char	*ft_strncpy(char *s1, char *s2, int n);
 int		count_words(char *str);
 char	**ft_split(char *str);
+
 /*---------------------- ERROR MANAGER ----------------------*/
 bool	error_syntax(char *argv);
 bool	error_dobble(t_stack **stack, int n);
@@ -76,8 +88,10 @@ void	set_stacks(t_stack **stack_a, t_stack **stack_b, char which_stack);
 void	set_push_cost(t_stack *src_node, t_stack **target_stack, int index_last_node);
 void	set_cheapest(t_stack **stack);
 void	ft_putstr(char *str);
-void	move(t_stack **stack_a, t_stack **stack_b, t_stack *node_src, bool above_median);
+void	move_both(t_stack **stack_a, t_stack **stack_b, t_stack *node_src, bool above_median);
+void	move_one(t_stack **stack, t_stack *src_node, char witch_stack);
 void	move_a_to_b(t_stack **stack_a, t_stack **stack_b);
 void	move_b_to_a(t_stack **stack_a, t_stack **stack_b);
 void	min_on_top(t_stack **stack_a);
+void	display_stack(t_stack **stack);
 #endif
