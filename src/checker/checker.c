@@ -6,12 +6,11 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:21:37 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 15:19:10 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:39:32 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
-
 
 int		ft_strcmp(char *s1, char *s2)
 {
@@ -84,7 +83,7 @@ int	main(int ac, char **av)
 		if (do_commands(&a, &b, line) == 0)
 		{
 			free_stack(&b);
-			free_errors(&a, av, "Error\n", false);
+			free_errors(&a, av, false);
 		}
 		line = get_next_line(0);
 	}

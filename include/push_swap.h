@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 15:18:58 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:39:27 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ bool	error_syntax(char *argv);
 bool	error_dobble(t_stack **stack, int n);
 void	free2d(char **str);
 void	free_stack(t_stack **stack);
-void	free_errors(t_stack **stack, char **argv, char *error_msg, bool tab2d);
+void	free_errors(t_stack **stack, char **argv, bool tab2d);
 
 /*------------------------ SET STACK ------------------------*/
 void	set_index_median(t_stack *stack);

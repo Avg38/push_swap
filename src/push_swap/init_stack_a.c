@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:58:14 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 14:58:26 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:39:47 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ void	check_init_a(t_stack **stack, char **av, bool tab2d)
 	while (av[i])
 	{
 		if (error_syntax(av[i]))
-			free_errors(&head, av, "Syntax error.", tab2d);
+			free_errors(&head, av, tab2d);
 		n = ft_atol(av[i]);
 		if (n < INT_MIN || n > INT_MAX)
-			free_errors(&head, av, "Not bitween INT_MIN and INT_MAX.", tab2d);
+			free_errors(&head, av, tab2d);
 		if (error_dobble(&head, n))
-			free_errors(&head, av, "A value is in double.", tab2d);
+			free_errors(&head, av, tab2d);
 		if (!add_node(&head, (int)n))
-			free_errors(&head, av, "Add node is not working.", tab2d);
+			free_errors(&head, av, tab2d);
 		i++;
 	}
 	if (tab2d)
