@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 14:03:15 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:24:06 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ t_stack	*find_max(t_stack *stack);
 t_stack	*find_cheapest(t_stack **stack);
 
 /*------------------------- CHECKER -------------------------*/
-int		ft_strcmp(char *s1, char *s2);
 int		ft_strcmp(char *s1, char *s2);
 void	exit_programm(t_stack **a, t_stack **b, char *verif);
 void	commands(t_stack **a, t_stack **b, char *command);
