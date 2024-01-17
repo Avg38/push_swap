@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:59:02 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 11:26:35 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/17 08:50:53 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	error_syntax(char *argv)
 		i++;
 	while (argv[i])
 	{
-		if (!ft_isdigit(argv[i]))
+		if (!(argv[i] >= '0' && argv[i] <= '9'))
 			return (true);
 		i++;
 	}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_str.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:03:14 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 10:06:38 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:02:58 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strncpy(char *s1, char *s2, int n)
 	return (s1);
 }
 
-int	count_words(char *str)
+static int	count_words(char *str, char sep)
 {
 	int	i;
 	int	wc;
@@ -32,25 +32,25 @@ int	count_words(char *str)
 	wc = 0;
 	while (str[i])
 	{
-		while (str[i] && (str[i] == ' ' || str[i] == '\t'))
+		while (str[i] && str[i] == sep)
 			i++;
 		if (str[i])
 			wc++;
-		while (str[i] && (str[i] != ' ' && str[i] != '\t'))
+		while (str[i] && str[i] != sep)
 			i++;
 	}
 	return (wc);
 }
 
-char	*extract_line(char *str, int *i)
+static char	*extract_line(char *str, int *i, char sep)
 {
 	int		j;
 	char	*word;
 
-	while (str[*i] && (str[*i] == ' ' || str[*i] == '\t'))
+	while (str[*i] && str[*i] == sep)
 		(*i)++;
 	j = *i;
-	while (str[*i] && (str[*i] != ' ' && str[*i] != '\t'))
+	while (str[*i] && str[*i] != sep)
 		(*i)++;
 	if (*i > j)
 	{
@@ -62,24 +62,39 @@ char	*extract_line(char *str, int *i)
 	return (word);
 }
 
-char	**ft_split(char *str)
+char	**ft_split(char *str, char sep)
 {
 	int		i;
 	int		k;
 	char	**split;
 
-	split = malloc((count_words(str) + 1) * sizeof(char *));
+	split = malloc((count_words(str, sep) + 1) * sizeof(char *));
 	if (!split)
 		return (NULL);
 	i = 0;
 	k = 0;
 	while (str[i])
 	{
-		split[k] = extract_line(str, &i);
+		split[k] = extract_line(str, &i, sep);
 		if (!split[k])
 			return (free2d(split), NULL);
 		k++;
 	}
 	split[k] = NULL;
 	return (split);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*dest;
+
+	if (!s1 || !s2)
+		return (NULL);
+	dest = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!dest)
+		return (NULL);
+	dest[0] = '\0';
+	ft_strcat(dest, s1);
+	ft_strcat(dest, s2);
+	return (dest);
 }

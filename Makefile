@@ -1,37 +1,63 @@
 NAME = push_swap
+NAME_BONUS = checker/checker
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
-SRCS =	src/push_swap/main.c \
-		src/push_swap/error_manager.c \
-		src/push_swap/ft_split.c \
-		src/push_swap/init_stack.c \
-		src/push_swap/set_stacks.c \
-		src/push_swap/sort_stack.c \
-		src/push_swap/utils.c \
-		src/push_swap/move.c \
-		src/push_swap/ft_printf1.c \
-		src/push_swap/ft_printf2.c \
-		src/commands/push.c \
+SRCS =	src/commands/push.c \
 		src/commands/reverse_rotate.c \
 		src/commands/rotate.c \
-		src/commands/swap.c
+		src/commands/swap.c \
+		src/libft/ft_printf1.c \
+		src/libft/ft_printf2.c \
+		src/libft/get_next_line.c \
+		src/libft/get_next_line_utils.c \
+		src/libft/ft_str.c \
+		src/libft/utils.c \
+		src/push_swap/main.c \
+		src/push_swap/errors_and_free.c \
+		src/push_swap/find.c \
+		src/push_swap/set_stacks.c \
+		src/push_swap/sort_stacks.c \
+		src/push_swap/move.c \
+
+SRCS_BONUS =	src/commands/push.c \
+				checker/checker.c \
+				src/commands/reverse_rotate.c \
+				src/commands/rotate.c \
+				src/commands/swap.c \
+				src/libft/ft_printf1.c \
+				src/libft/ft_printf2.c \
+				src/libft/get_next_line.c \
+				src/libft/get_next_line_utils.c \
+				src/libft/ft_str.c \
+				src/libft/utils.c \
+				src/push_swap/main.c \
+				src/push_swap/errors_and_free.c \
+				src/push_swap/find.c \
+				src/push_swap/set_stacks.c \
+				src/push_swap/sort_stacks.c \
+				src/push_swap/move.c \
+
 OBJS = $(SRCS:.c=.o)
 
-all: obj $(NAME)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-obj/%.o: src/%.c include/push_swap.h
+all: $(NAME)
+
+%.o: src/%.c include/push_swap.h
 	@$(CC) $(CFLAGS) -g3 -c $< -o $@
 
 $(NAME): $(OBJS) include/push_swap.h
 	@$(CC) $(CFLAGS) -g3 -o $@ $^
-	@mv ${OBJS} obj/
 
-obj:
-	@mkdir -p obj
+$(NAME_BONUS): $(OBJS_BONUS) include/push_swap.h
+	@$(CC) $(CFLAGS) -g3 -o $(NAME_BONUS)
+
+bonus : $(NAME_BONUS)
 
 clean:
-	$(RM) obj
+	$(RM) $(OBJS)
+	$(RM) $(OBJS_BONUS)
 
 fclean: clean
 	$(RM) $(NAME)

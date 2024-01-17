@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:08:08 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 11:37:43 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:51:15 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,40 @@
 
 void	reverse_rotate(t_stack **stack)
 {
-	t_stack	*first;
-	t_stack	*last;
+	t_stack	*new_first;
+	t_stack	*tmp;
 
 	if (!(*stack) || !(*stack)->next)
 		return ;
-	first = *stack;
-	*stack = first->next;
-	last = find_last(stack);
-	if (!last)
+	new_first = find_last(stack);
+	if (!new_first)
 		return ;
-	last->next = first;
-	last->next->next = NULL;
+	tmp = *stack;
+	while (tmp->next->next)
+		tmp = tmp->next;
+	new_first->next = *stack;
+	*stack = new_first;
+	tmp->next = NULL;
 }
 
-void	rra(t_stack **stack_a, bool checker)
+void	rra(t_stack **a, bool checker)
 {
-	reverse_rotate(stack_a);
+	reverse_rotate(a);
 	if (!checker)
 		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack **stack_b, bool checker)
+void	rrb(t_stack **b, bool checker)
 {
-	reverse_rotate(stack_b);
+	reverse_rotate(b);
 	if (!checker)
 		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack **stack_a, t_stack **stack_b, bool checker)
+void	rrr(t_stack **a, t_stack **b, bool checker)
 {
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
+	reverse_rotate(a);
+	reverse_rotate(b);
 	if (!checker)
 		write(1, "rrr\n", 4);
 }

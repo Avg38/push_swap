@@ -6,92 +6,110 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 10:18:27 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 16:33:47 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:53:12 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	move_both(t_stack **stack_a, t_stack **stack_b, t_stack *node_src, bool above_median)
+void	move_both(t_stack **a, t_stack **b, t_stack *src, bool above_median)
 {
 	if (above_median == true)
 	{
-		while (node_src->index != 0 && node_src->target->index != 0)
+		while (src->index != 0 && src->target->index != 0)
 		{
-			rr(stack_a, stack_b, false);
-			set_index(stack_a);
-			set_index(stack_b);
+			rr(a, b, false);
+			set_index_median(*a);
+			set_index_median(*b);
 		}
 	}
 	else if (above_median == false)
 	{
-		while (node_src->index != 0 && node_src->target->index != 0)
+		while (src->index != 0 && src->target->index != 0)
 		{
-			rrr(stack_a, stack_b, false);
-			set_index(stack_a);
-			set_index(stack_b);
+			rrr(a, b, false);
+			set_index_median(*a);
+			set_index_median(*b);
 		}
 	}
 }
 
-void	move_one(t_stack **stack, t_stack *node_src, char witch_stack)
+void	move_one(t_stack **stack, t_stack *src, char witch_stack)
 {
-	if (node_src->above_median == true)
+	if (src->above_median == true)
 	{
-		while (node_src->index != 0)
+		while (src->index != 0)
 		{
 			if (witch_stack == 'a')
 				ra(stack, false);
 			else
 				rb(stack, false);
-			set_index(stack);
+			set_index_median(*stack);
 		}
 	}
-	else if (node_src->above_median == false)
+	else if (src->above_median == false)
 	{
-		while (node_src->index != 0)
+		while (src->index != 0)
 		{
 			if (witch_stack == 'a')
 				rra(stack, false);
 			else
 				rrb(stack, false);
-			set_index(stack);
+			set_index_median(*stack);
 		}
 	}
 }
 
-void	move_a_to_b(t_stack **stack_a, t_stack **stack_b)
+void	move(t_stack **src, t_stack **dst, char direction)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack	*cheapest;
+	t_stack	*target;
 
-	if (!stack_a)
+	if (!src)
 		return ;
-	a = find_cheapest(stack_a);
-	b = a->target;
-	if (a->above_median == true && b->above_median == true)
-		move_both(stack_a, stack_b, a, true);
-	else if (a->above_median == false && b->above_median == false)
-		move_both(stack_a, stack_b, a, false);
-	move_one(stack_a, a, 'a');
-	move_one(stack_b, b, 'b');
-	pb(stack_a, stack_b, false);
+	cheapest = find_cheapest(src);
+	target = cheapest->target;
+	if ((cheapest->above_median == true && cheapest->above_median == true)
+		|| (target->above_median == false && cheapest->above_median == false))
+		move_both(src, dst, cheapest, cheapest->above_median);
+	move_one(src, cheapest, direction);
+	move_one(dst, target, direction);
+	if (direction == 'a')
+		pa(src, dst, false);
+	if (direction == 'b')
+		pb(src, dst, false);
 }
 
-void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*a;
-	t_stack	*b;
+// void	move_a_to_b(t_stack **a, t_stack **b)
+// {
+// 	t_stack	*cheapest;
+// 	t_stack	*target;
 
-	if (!stack_b)
-		return ;
-	b = find_cheapest(stack_b);
-	a = b->target;
-	if (a->above_median == true && b->above_median == true)
-		move_both(stack_a, stack_b, b, true);
-	else if (a->above_median == false && b->above_median == false)
-		move_both(stack_a, stack_b, b, false);
-	move_one(stack_a, a, 'a');
-	move_one(stack_b, b, 'b');
-	pa(stack_a, stack_b, false);
-}
+// 	if (!a)
+// 		return ;
+// 	cheapest = find_cheapest(a);
+// 	target = cheapest->target;
+// 	if ((cheapest->above_median == true && cheapest->above_median == true)
+// 		|| (target->above_median == false && cheapest->above_median == false))
+// 		move_both(a, b, cheapest, cheapest->above_median);
+// 	move_one(a, cheapest, 'a');
+// 	move_one(b, target, 'b');
+// 	pb(a, b, false);
+// }
+
+// void	move_b_to_a(t_stack **a, t_stack **b)
+// {
+// 	t_stack	*target;
+// 	t_stack	*cheapest;
+
+// 	if (!b)
+// 		return ;
+// 	cheapest = find_cheapest(b);
+// 	target = cheapest->target;
+// 	if ((cheapest->above_median == true && cheapest->above_median == true)
+// 		|| (target->above_median == false && cheapest->above_median == false))
+// 		move_both(a, b, cheapest, cheapest->above_median);
+// 	move_one(a, target, 'a');
+// 	move_one(b, cheapest, 'b');
+// 	pa(a, b, false);
+// }

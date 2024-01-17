@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 17:21:54 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:03:15 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 # include <stdio.h>
 # include <stdarg.h>
 
+/*------------------------ GLOBAL VAR ------------------------*/
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 /*------------------------ STRUCTURE ------------------------*/
 typedef struct s_stack
 {
@@ -34,19 +39,21 @@ typedef struct s_stack
 }	t_stack;
 
 /*------------------------ COMMANDS ------------------------*/
-void	sa(t_stack **stack_a, bool checker);
-void	sb(t_stack **stack_b, bool checker);
-void	ss(t_stack **stack_a, t_stack **stack_b, bool checker);
-void	pa(t_stack **stack_a, t_stack **stack_b, bool checker);
-void	pb(t_stack **stack_b, t_stack **stack_a, bool checker);
-void	ra(t_stack **stack_a, bool checker);
-void	rb(t_stack **stack_b, bool checker);
-void	rr(t_stack **stack_a, t_stack **stack_b, bool checker);
-void	rra(t_stack **stack_a, bool checker);
-void	rrb(t_stack **stack_b, bool checker);
-void	rrr(t_stack **stack_a, t_stack **stack_b, bool checker);
+void	sa(t_stack **a, bool checker);
+void	sb(t_stack **b, bool checker);
+void	ss(t_stack **a, t_stack **b, bool checker);
+void	pa(t_stack **b, t_stack **a, bool checker);
+void	pb(t_stack **a, t_stack **b, bool checker);
+void	ra(t_stack **a, bool checker);
+void	rb(t_stack **b, bool checker);
+void	rr(t_stack **a, t_stack **b, bool checker);
+void	rra(t_stack **a, bool checker);
+void	rrb(t_stack **b, bool checker);
+void	rrr(t_stack **a, t_stack **b, bool checker);
 
-/*------------------------ FT_PRINTF ------------------------*/
+/*-------------------------- LIBFT --------------------------*/
+// ft_printf
+int		ft_printf(const char *str, ...);
 void	ft_print_ptr(unsigned long long addr, size_t *len);
 void	ft_print_nbr(int nb, size_t *len);
 void	ft_print_hexa(unsigned int nb, char *base, size_t *len);
@@ -54,15 +61,26 @@ void	ft_print_unsigned(unsigned int nb, size_t *len);
 void	ft_print_char(int c, size_t *len);
 void	ft_print_str(char *str, size_t *len);
 void	len_var(va_list args, const char c, size_t *len);
-int		ft_printf(const char *str, ...);
+// get_next_line
+char	*get_next_line(int fd);
+size_t	check_newline(char *str);
+size_t	ft_strlen_gnl(char *str);
+char	*str_init(char	*line);
+// ft_split
+char	**ft_split(char *str, char sep);
+char	*ft_strncpy(char *s1, char *s2, int n);
+// ft_strjoin
+int		ft_strlen(char *str);
+char	*ft_strcat(char *dest, const char *src);
+char	*ft_strjoin(char *s1, char *s2);
+// utils
+bool	add_node(t_stack **stack, int n);
+long	ft_atol(char *argv);
+void	ft_putstr(char *str);
 
 /*------------------------ FUNCTIONS ------------------------*/
 int		main(int argc, char **argv);
-bool	add_node(t_stack **stack, int n);
-void	check_init_stack_a(t_stack **stack, char **argv, bool tab2d);
-char	*ft_strncpy(char *s1, char *s2, int n);
-int		count_words(char *str);
-char	**ft_split(char *str);
+void	check_init_a(t_stack **stack, char **argv, bool tab2d);
 
 /*---------------------- ERROR MANAGER ----------------------*/
 bool	error_syntax(char *argv);
@@ -70,28 +88,41 @@ bool	error_dobble(t_stack **stack, int n);
 void	free2d(char **str);
 void	free_stack(t_stack **stack);
 void	free_errors(t_stack **stack, char **argv, char *error_msg, bool tab2d);
-void	smaller_closest(t_stack *src_node, t_stack **target_stack);
-void	bigger_closest(t_stack *src_node, t_stack **target_stack);
-t_stack	*find_last(t_stack **stack);
-int		ft_isdigit(char c);
-long	ft_atol(char *argv);
-t_stack	*find_min(t_stack *stack);
-t_stack	*find_max(t_stack *stack);
-t_stack	*find_cheapest(t_stack **stack);
+
+/*------------------------ SET STACK ------------------------*/
+void	set_index_median(t_stack *stack);
+void	smaller_closest(t_stack *src, t_stack **target_stack);
+void	bigger_closest(t_stack *src, t_stack **target_stack);
+void	set_stacks(t_stack **a, t_stack **b, char which_stack);
+void	set_push_cost(t_stack *src, t_stack **target_stack, int index_last);
+void	set_cheapest(t_stack **stack);
+
+/*------------------------ SORT STACK ------------------------*/
 void	sort_three(t_stack	**stack);
 bool	stack_sorted(t_stack *stack);
 int		size_stack(t_stack *stack);
-void	set_median(t_stack **stack);
-void	set_index(t_stack **stack);
-void	sort_stack(t_stack **stack_a, t_stack **stack_b);
-void	set_stacks(t_stack **stack_a, t_stack **stack_b, char which_stack);
-void	set_push_cost(t_stack *src_node, t_stack **target_stack, int index_last_node);
-void	set_cheapest(t_stack **stack);
-void	ft_putstr(char *str);
-void	move_both(t_stack **stack_a, t_stack **stack_b, t_stack *node_src, bool above_median);
-void	move_one(t_stack **stack, t_stack *src_node, char witch_stack);
-void	move_a_to_b(t_stack **stack_a, t_stack **stack_b);
-void	move_b_to_a(t_stack **stack_a, t_stack **stack_b);
-void	min_on_top(t_stack **stack_a);
-void	display_stack(t_stack **stack);
+void	sort_stack(t_stack **a, t_stack **b);
+void	min_on_top(t_stack **a);
+
+/*------------------------ MOVE NODE ------------------------*/
+void	move_both(t_stack **a, t_stack **b, t_stack *src, bool above_median);
+void	move_one(t_stack **stack, t_stack *src, char witch_stack);
+void	move(t_stack **src, t_stack **dst, char direction);
+
+/*------------------------ FIND NODE ------------------------*/
+t_stack	*find_last(t_stack **stack);
+t_stack	*find_min(t_stack *stack);
+t_stack	*find_max(t_stack *stack);
+t_stack	*find_cheapest(t_stack **stack);
+
+/*------------------------- CHECKER -------------------------*/
+int		ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
+void	exit_programm(t_stack **a, t_stack **b, char *verif);
+void	commands(t_stack **a, t_stack **b, char *command);
+void	do_commands(t_stack **a, t_stack **b);
+
+// void	move_a_to_b(t_stack **a, t_stack **b);
+// void	move_b_to_a(t_stack **a, t_stack **b);
+// void	display_stack(t_stack *stack);
 #endif

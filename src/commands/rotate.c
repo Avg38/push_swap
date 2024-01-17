@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:08:14 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/12 15:22:36 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:51:17 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,24 @@ void	rotate(t_stack **stack)
 	first->next = NULL;
 }
 
-void	ra(t_stack **stack_a, bool checker)
+void	ra(t_stack **a, bool checker)
 {
-	rotate(stack_a);
+	rotate(a);
 	if (!checker)
 		write(1, "ra\n", 3);
 }
 
-void	rb(t_stack **stack_b, bool checker)
+void	rb(t_stack **b, bool checker)
 {
-	rotate(stack_b);
+	rotate(b);
 	if (!checker)
 		write(1, "rb\n", 3);
 }
 
-void	rr(t_stack **stack_a, t_stack **stack_b, bool checker)
+void	rr(t_stack **a, t_stack **b, bool checker)
 {
-	rotate(stack_a);
-	rotate(stack_b);
+	rotate(a);
+	rotate(b);
 	if (!checker)
 		write(1, "rr\n", 3);
 }

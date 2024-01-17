@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:14:28 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 11:23:44 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:51:20 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,24 @@ void	swap_node(t_stack **stack)
 	}
 }
 
-void	sa(t_stack **stack_a, bool checker)
+void	sa(t_stack **a, bool checker)
 {
-	swap_node(stack_a);
+	swap_node(a);
 	if (!checker)
 		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack **stack_b, bool checker)
+void	sb(t_stack **b, bool checker)
 {
-	swap_node(stack_b);
+	swap_node(b);
 	if (!checker)
 		write(1, "sb\n", 3);
 }
 
-void	ss(t_stack **stack_a, t_stack **stack_b, bool checker)
+void	ss(t_stack **a, t_stack **b, bool checker)
 {
-	swap_node(stack_a);
-	swap_node(stack_b);
+	swap_node(a);
+	swap_node(b);
 	if (!checker)
 		write(1, "ss\n", 3);
 }
