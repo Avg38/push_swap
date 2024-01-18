@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:48:27 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 14:58:12 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:13:19 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-// void	display_stack(t_stack *stack)
-// {
-// 	t_stack *cur;
+void	display_stack(t_stack *stack)
+{
+	t_stack *cur;
 
-// 	cur = stack;
-// 	while (cur)
-// 	{
-// 		ft_printf("nb = %d\n", cur->nb);
-// 		if (cur->target)
-// 			ft_printf("target = %d\n", cur->target->nb);
-// 		cur = cur->next;
-// 	}
-// }
+	cur = stack;
+	while (cur)
+	{
+		ft_printf("nb = %d\n cheapest = %d", cur->nb, cur->cheapest);
+		if (cur->target)
+			ft_printf("target = %d\n", cur->target->nb);
+		cur = cur->next;
+	}
+}

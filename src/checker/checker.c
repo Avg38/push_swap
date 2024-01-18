@@ -6,13 +6,13 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:21:37 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 15:39:32 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/18 11:13:19 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int		ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
@@ -28,10 +28,8 @@ void	exit_programm(t_stack **a, t_stack **b)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
-	if (*a)
-		free_stack(a);
-	if (*b)
-		free_stack(b);
+	free_stack(a);
+	free_stack(b);
 }
 
 int	do_commands(t_stack **a, t_stack **b, char *command)

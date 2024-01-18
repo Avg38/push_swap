@@ -3,3 +3,10 @@
 *.out
 *.exe
 /obj
+/push_swap_tester
+/push_swap_visualizer
+/martejo
+imgui.ini
+checker_linux
+push_swap_tester
+checker

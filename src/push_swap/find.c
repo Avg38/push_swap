@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:50:05 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 10:59:46 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:46:21 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,45 +24,62 @@ t_stack	*find_last(t_stack **stack)
 	return (tmp);
 }
 
-t_stack	*find_min(t_stack *stack)
+t_stack	*find_max_or_min(t_stack *stack, bool max)
 {
-	t_stack	*node_min;
-	int		min;
+	t_stack	*extrem_node;
 
 	if (!stack)
 		return (NULL);
-	min = INT_MAX;
-	while (stack != NULL)
+	extrem_node = stack;
+	while (stack)
 	{
-		if (stack->nb < min)
-		{
-			min = stack->nb;
-			node_min = stack;
-		}
+		if ((max == true && stack->nb > extrem_node->nb)
+			|| (max == false && stack->nb < extrem_node->nb))
+			extrem_node = stack;
 		stack = stack->next;
 	}
-	return (node_min);
+	return (extrem_node);
 }
 
-t_stack	*find_max(t_stack *stack)
-{
-	t_stack	*node_max;
-	int		max;
+// t_stack	*find_min(t_stack *stack)
+// {
+// 	t_stack	*node_min;
+// 	int		min;
 
-	if (!stack)
-		return (NULL);
-	max = INT_MIN;
-	while (stack != NULL)
-	{
-		if (stack->nb > max)
-		{
-			max = stack->nb;
-			node_max = stack;
-		}
-		stack = stack->next;
-	}
-	return (node_max);
-}
+// 	if (!stack)
+// 		return (NULL);
+// 	min = INT_MAX;
+// 	while (stack != NULL)
+// 	{
+// 		if (stack->nb < min)
+// 		{
+// 			min = stack->nb;
+// 			node_min = stack;
+// 		}
+// 		stack = stack->next;
+// 	}
+// 	return (node_min);
+// }
+
+// t_stack	*find_max(t_stack *stack)
+// {
+// 	t_stack	*node_max;
+// 	int		max;
+
+// 	if (!stack)
+// 		return (NULL);
+// 	max = INT_MIN;
+// 	while (stack != NULL)
+// 	{
+// 		if (stack->nb > max)
+// 		{
+// 			max = stack->nb;
+// 			node_max = stack;
+// 		}
+// 		stack = stack->next;
+// 	}
+// 	return (node_max);
+// }
 
 t_stack	*find_cheapest(t_stack **stack)
 {

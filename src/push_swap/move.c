@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 10:18:27 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 10:53:12 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:18:17 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	move(t_stack **src, t_stack **dst, char direction)
 	if (!src)
 		return ;
 	cheapest = find_cheapest(src);
+	// display_stack(*src);
 	target = cheapest->target;
 	if ((cheapest->above_median == true && cheapest->above_median == true)
 		|| (target->above_median == false && cheapest->above_median == false))

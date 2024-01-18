@@ -15,7 +15,7 @@ SRCS =	src/commands/push.c \
 		src/libft/ft_str.c \
 		src/libft/utils.c \
 		src/push_swap/main.c \
-		src/push_swap/init_stack_a.c \
+		src/push_swap/check_init_a.c \
 		src/push_swap/errors_and_free.c \
 		src/push_swap/find.c \
 		src/push_swap/set_stacks.c \
@@ -33,7 +33,7 @@ SRCS_BONUS =	src/checker/checker.c \
 				src/libft/get_next_line_utils.c \
 				src/libft/ft_str.c \
 				src/libft/utils.c \
-				src/push_swap/init_stack_a.c \
+				src/push_swap/check_init_a.c \
 				src/push_swap/errors_and_free.c \
 				src/push_swap/find.c \
 				src/push_swap/set_stacks.c \

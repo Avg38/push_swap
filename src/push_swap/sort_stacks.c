@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:51:29 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 10:51:48 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:47:44 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	set_stacks(t_stack **a, t_stack **b, char which_stack)
 	set_index_median(*b);
 	if (which_stack == 'a')
 	{
-		smaller_closest(*a, b);
-		set_push_cost(*a, b, find_last(a)->index);
+		set_target(*a, *b, 'a', true);
+		set_push_cost(*a, *b);
 		set_cheapest(a);
 	}
 	else if (which_stack == 'b')
 	{
-		bigger_closest(*b, a);
-		set_push_cost(*b, a, find_last(b)->index);
+		set_target(*b, *a, 'b', false);
+		set_push_cost(*b, *a);
 		set_cheapest(b);
 	}
 }
@@ -52,7 +52,7 @@ void	sort_three(t_stack	**stack)
 
 	if (!stack || !(*stack))
 		return ;
-	max = find_max(*stack);
+	max = find_max_or_min(*stack, true);
 	if (*stack == max)
 		ra(stack, false);
 	else if ((*stack)->next == max)
@@ -65,7 +65,7 @@ void	min_on_top(t_stack **a)
 {
 	t_stack	*min;
 
-	min = find_min(*a);
+	min = find_max_or_min(*a, false);
 	if (!min)
 		return ;
 	while (true)
