@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/18 13:46:37 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/18 14:57:42 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ void	min_on_top(t_stack **a);
 void	move_both(t_stack **a, t_stack **b, t_stack *src, bool above_median);
 void	move_one(t_stack **stack, t_stack *src, char witch_stack);
 void	move(t_stack **src, t_stack **dst, char direction);
+void	move_a_to_b(t_stack **a, t_stack **b);
+void	move_b_to_a(t_stack **a, t_stack **b);
 
 /*------------------------ FIND NODE ------------------------*/
 t_stack	*find_last(t_stack **stack);
