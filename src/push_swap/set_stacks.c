@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:53:08 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/18 13:45:56 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:56:59 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void	set_target(t_stack *src, t_stack *target, char witch_stack, bool max)
 
 	if (!src || !target)
 		return ;
-	while (src != NULL)
+	while (src)
 	{
 		cur = target;
 		nbr = INT_MIN;
 		if (!max)
 			nbr = INT_MAX;
-		while (cur != NULL)
+		while (cur)
 		{
 			if ((cur->nb < src->nb && cur->nb > nbr && witch_stack == 'a')
 				|| (cur->nb > src->nb && cur->nb < nbr && witch_stack == 'b'))
@@ -61,58 +61,6 @@ void	set_target(t_stack *src, t_stack *target, char witch_stack, bool max)
 		src = src->next;
 	}
 }
-
-// void	smaller_closest(t_stack *a, t_stack *b)
-// {
-// 	int		nbr;
-// 	t_stack	*cur;
-
-// 	if (!a || !b)
-// 		return ;
-// 	while (a != NULL)
-// 	{
-// 		cur = b;
-// 		nbr = INT_MIN;
-// 		while (cur != NULL)
-// 		{
-// 			if (cur->nb < a->nb && cur->nb > nbr)
-// 			{
-// 				nbr = cur->nb;
-// 				a->target = cur;
-// 			}
-// 			cur = cur->next;
-// 		}
-// 		if (nbr == INT_MIN)
-// 			a->target = find_max(b);
-// 		a = a->next;
-// 	}
-// }
-
-// void	bigger_closest(t_stack *b, t_stack *a)
-// {
-// 	int		nbr;
-// 	t_stack	*current;
-
-// 	if (!b || !a)
-// 		return ;
-// 	while (b != NULL)
-// 	{
-// 		nbr = INT_MAX;
-// 		current = a;
-// 		while (current != NULL)
-// 		{
-// 			if (current->nb > b->nb && current->nb < nbr)
-// 			{
-// 				nbr = current->nb;
-// 				b->target = current;
-// 			}
-// 			current = current->next;
-// 		}
-// 		if (nbr == INT_MAX)
-// 			b->target = find_min(a);
-// 		b = b->next;
-// 	}
-// }
 
 // void	set_push_cost(t_stack *src, t_stack **target_stack, int index_last)
 // {
@@ -160,56 +108,23 @@ void	set_push_cost(t_stack *src, t_stack *target)
 	}
 }
 
-void	set_cheapest(t_stack **stack)
+void	set_cheapest(t_stack *stack)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	t_stack	*cheapest_node;
 	int		tmp_cost;
 
 	if (!stack)
 		return ;
-	tmp = *stack;
 	tmp_cost = INT_MAX;
-	current = *stack;
-	while (current)
+	while (stack)
 	{
-		current->cheapest = false;
-		current = current->next;
-	}
-	current = *stack;
-	while (current)
-	{
-		if (current->push_cost < tmp_cost)
+		stack->cheapest = false;
+		if (stack->push_cost < tmp_cost)
 		{
-			tmp = *stack;
-			tmp_cost = current->push_cost;
+			cheapest_node = stack;
+			tmp_cost = stack->push_cost;
 		}
-		current = current->next;
+		stack = stack->next;
 	}
-	tmp->cheapest = true;
+	cheapest_node->cheapest = true;
 }
-
-// void	set_median(t_stack **stack)
-// {
-// 	int		i;
-// 	int		size;
-// 	t_stack	*current;
-
-// 	if (!stack)
-// 		return ;
-// 	i = 1;
-// 	current = *stack;
-// 	size = size_stack(*stack);
-// 	while (i < size / 2 && current != NULL)
-// 	{
-// 		current->above_median = true;
-// 		current = current->next;
-// 		i++;
-// 	}
-// 	while (i < size && *stack != NULL)
-// 	{
-// 		current->above_median = false;
-// 		current = current->next;
-// 		i++;
-// 	}
-// }

@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:50:05 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/18 13:46:21 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:33:18 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,55 +41,15 @@ t_stack	*find_max_or_min(t_stack *stack, bool max)
 	return (extrem_node);
 }
 
-// t_stack	*find_min(t_stack *stack)
-// {
-// 	t_stack	*node_min;
-// 	int		min;
-
-// 	if (!stack)
-// 		return (NULL);
-// 	min = INT_MAX;
-// 	while (stack != NULL)
-// 	{
-// 		if (stack->nb < min)
-// 		{
-// 			min = stack->nb;
-// 			node_min = stack;
-// 		}
-// 		stack = stack->next;
-// 	}
-// 	return (node_min);
-// }
-
-// t_stack	*find_max(t_stack *stack)
-// {
-// 	t_stack	*node_max;
-// 	int		max;
-
-// 	if (!stack)
-// 		return (NULL);
-// 	max = INT_MIN;
-// 	while (stack != NULL)
-// 	{
-// 		if (stack->nb > max)
-// 		{
-// 			max = stack->nb;
-// 			node_max = stack;
-// 		}
-// 		stack = stack->next;
-// 	}
-// 	return (node_max);
-// }
-
-t_stack	*find_cheapest(t_stack **stack)
+t_stack	*find_cheapest(t_stack *stack)
 {
-	if (!stack || !(*stack))
+	if (!stack)
 		return (NULL);
-	while (*stack != NULL)
+	while (stack != NULL)
 	{
-		if ((*stack)->cheapest == true)
-			return (*stack);
-		*stack = (*stack)->next;
+		if (stack->cheapest == true)
+			return stack;
+		stack = stack->next;
 	}
 	return (NULL);
 }

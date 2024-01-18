@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:51:29 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/18 14:44:43 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:44:57 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	set_stacks(t_stack **a, t_stack **b, char which_stack)
 	{
 		set_target(*a, *b, 'a', true);
 		set_push_cost(*a, *b);
-		set_cheapest(a);
+		set_cheapest(*a);
 	}
 	else if (which_stack == 'b')
 	{
 		set_target(*b, *a, 'b', false);
 		set_push_cost(*b, *a);
-		set_cheapest(b);
+		set_cheapest(*b);
 	}
 }
 
@@ -91,13 +91,13 @@ void	sort_stack(t_stack **a, t_stack **b)
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{
 		set_stacks(a, b, 'a');
-		move(a, b, 'b');
+		move_a_to_b(a, b);
 	}
 	sort_three(a);
 	while (*b)
 	{
 		set_stacks(a, b, 'b');
-		move(b, a, 'a');
+		move_b_to_a(b, a);
 	}
 	set_index_median(*a);
 	min_on_top(a);
