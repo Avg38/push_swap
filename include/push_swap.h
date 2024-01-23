@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/23 09:56:54 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:25:12 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,12 @@ bool	error_syntax(char *argv);
 bool	error_dobble(t_stack **stack, int n);
 void	free2d(char **str);
 void	free_stack(t_stack **stack);
-void	free_errors(t_stack **stack, t_stack **head, char **argv, bool tab2d);
+void	free_errors(t_stack **stack, char **argv, bool tab2d);
 
 /*------------------------ SET STACK ------------------------*/
 void	set_index_median(t_stack *stack);
 void	set_target(t_stack *src, t_stack *target, char witch_stack, bool max);
-// void	smaller_closest(t_stack *a, t_stack *b);
-// void	bigger_closest(t_stack *b, t_stack *a);
 void	set_stacks(t_stack **a, t_stack **b, char which_stack);
-// void	set_push_cost(t_stack *src, t_stack **target_stack, int index_last);
 void	set_push_cost(t_stack *src, t_stack *target);
 void	set_cheapest(t_stack *stack);
 
@@ -115,8 +112,6 @@ void	move_b_to_a(t_stack **b, t_stack **a);
 
 /*------------------------ FIND NODE ------------------------*/
 t_stack	*find_last(t_stack **stack);
-// t_stack	*find_min(t_stack *stack);
-// t_stack	*find_max(t_stack *stack);
 t_stack	*find_max_or_min(t_stack *stack, bool true_for_max);
 t_stack	*find_cheapest(t_stack *stack);
 

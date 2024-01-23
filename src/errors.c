@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors_and_free.c                                  :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:59:02 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/23 13:13:28 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:24:24 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,11 @@ void	free_stack(t_stack **stack)
 	(*stack) = NULL;
 }
 
-void	free_errors(t_stack **stack, t_stack **head, char **argv, bool tab2d)
+void	free_errors(t_stack **stack, char **argv, bool tab2d)
 {
 	if (tab2d)
 		free2d(argv);
 	free_stack(stack);
-	free_stack(head);
 	ft_printf("Error\n");
 	exit(EXIT_FAILURE);
 }
