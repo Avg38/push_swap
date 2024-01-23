@@ -3,41 +3,46 @@ NAME_BONUS = checker
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
-SRCS =	src/commands/push.c \
-		src/commands/reverse_rotate.c \
-		src/commands/rotate.c \
-		src/commands/swap.c \
-		src/libft/ft_printf1.c \
-		src/libft/ft_printf2.c \
-		src/libft/get_next_line.c \
-		src/libft/get_next_line_utils.c \
-		src/libft/ft_str.c \
-		src/libft/utils.c \
-		src/push_swap/main.c \
-		src/push_swap/check_init_a.c \
-		src/push_swap/errors_and_free.c \
-		src/push_swap/find.c \
-		src/push_swap/set_stacks.c \
-		src/push_swap/sort_stacks.c \
-		src/push_swap/move.c \
+SRCS =	commands/push.c \
+		commands/reverse_rotate.c \
+		commands/rotate.c \
+		commands/swap.c \
+		\
+		libft/ft_printf1.c \
+		libft/ft_printf2.c \
+		libft/get_next_line.c \
+		libft/get_next_line_utils.c \
+		libft/ft_str.c \
+		libft/utils.c \
+		\
+		src/main.c \
+		src/check_init_a.c \
+		src/errors.c \
+		src/find.c \
+		src/set_stacks.c \
+		src/sort_stacks.c \
+		src/move.c \
 
-SRCS_BONUS =	src/checker/checker.c \
-				src/commands/push.c \
-				src/commands/reverse_rotate.c \
-				src/commands/rotate.c \
-				src/commands/swap.c \
-				src/libft/ft_printf1.c \
-				src/libft/ft_printf2.c \
-				src/libft/get_next_line.c \
-				src/libft/get_next_line_utils.c \
-				src/libft/ft_str.c \
-				src/libft/utils.c \
-				src/push_swap/check_init_a.c \
-				src/push_swap/errors_and_free.c \
-				src/push_swap/find.c \
-				src/push_swap/set_stacks.c \
-				src/push_swap/sort_stacks.c \
-				src/push_swap/move.c \
+SRCS_BONUS =	\
+		commands/push.c \
+		commands/reverse_rotate.c \
+		commands/rotate.c \
+		commands/swap.c \
+		\
+		libft/ft_printf1.c \
+		libft/ft_printf2.c \
+		libft/get_next_line.c \
+		libft/get_next_line_utils.c \
+		libft/ft_str.c \
+		libft/utils.c \
+		\
+		src/checker.c \
+		src/check_init_a.c \
+		src/errors.c \
+		src/find.c \
+		src/set_stacks.c \
+		src/sort_stacks.c \
+		src/move.c \
 
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)

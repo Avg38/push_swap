@@ -6,11 +6,11 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:50:05 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/23 09:43:02 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:13:30 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../include/push_swap.h"
 
 t_stack	*find_last(t_stack **stack)
 {

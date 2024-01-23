@@ -6,11 +6,11 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:48:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 12:12:01 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:18:51 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../include/push_swap.h"
 
 void	ft_putstr(char *str)
 {

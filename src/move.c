@@ -6,11 +6,11 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 10:18:27 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/18 16:47:18 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:13:35 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../include/push_swap.h"
 
 void	move_both(t_stack **a, t_stack **b, t_stack *cheap, bool above_median)
 {

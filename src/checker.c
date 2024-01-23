@@ -6,11 +6,11 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:21:37 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/23 09:59:04 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:13:23 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../include/push_swap.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {

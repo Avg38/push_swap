@@ -6,11 +6,11 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:09 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/15 17:15:40 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:19:35 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../include/push_swap.h"
 
 void	ft_print_ptr(unsigned long long addr, size_t *len)
 {

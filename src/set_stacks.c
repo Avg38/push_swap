@@ -6,11 +6,11 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:53:08 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/23 09:41:44 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:13:55 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../include/push_swap.h"
 
 void	set_index_median(t_stack *stack)
 {
@@ -61,31 +61,6 @@ void	set_target(t_stack *src, t_stack *target, char witch_stack, bool max)
 		src = src->next;
 	}
 }
-
-// void	set_push_cost(t_stack *src, t_stack **target_stack, int index_last)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	if (!src || !target_stack)
-// 		return ;
-// 	i = 0;
-// 	j = 0;
-// 	if (src->above_median == true)
-// 		i = src->index;
-// 	else
-// 		i = index_last - src->index;
-// 	if (src->target->index == true)
-// 		j = src->target->index;
-// 	else
-// 		j = find_last(target_stack)->index - src->index;
-// 	if (src->above_median != src->target->above_median)
-// 		src->push_cost = i + j;
-// 	else if (i >= j && src->above_median == src->target->above_median)
-// 		src->push_cost = i;
-// 	else
-// 		src->push_cost = j;
-// }
 
 void	set_push_cost(t_stack *src, t_stack *target)
 {

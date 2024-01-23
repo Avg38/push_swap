@@ -6,11 +6,11 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:48:27 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/23 09:42:01 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:13:32 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../include/push_swap.h"
 
 int	main(int argc, char **argv)
 {

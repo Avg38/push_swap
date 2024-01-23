@@ -6,11 +6,11 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:51:29 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/18 16:44:57 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:13:52 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../include/push_swap.h"
 
 void	set_stacks(t_stack **a, t_stack **b, char which_stack)
 {
