@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack_a.c                                     :+:      :+:    :+:   */
+/*   check_init_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:58:14 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 15:39:47 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 10:01:17 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,24 @@ void	check_init_a(t_stack **stack, char **av, bool tab2d)
 {
 	long	n;
 	int		i;
-	t_stack	*head;
+	t_stack	*tmp;
 
 	i = 0;
-	head = NULL;
+	tmp = NULL;
 	while (av[i])
 	{
 		if (error_syntax(av[i]))
-			free_errors(&head, av, tab2d);
+			free_errors(stack, &tmp, av, tab2d);
 		n = ft_atol(av[i]);
 		if (n < INT_MIN || n > INT_MAX)
-			free_errors(&head, av, tab2d);
-		if (error_dobble(&head, n))
-			free_errors(&head, av, tab2d);
-		if (!add_node(&head, (int)n))
-			free_errors(&head, av, tab2d);
+			free_errors(stack, &tmp, av, tab2d);
+		if (error_dobble(&tmp, n))
+			free_errors(stack, &tmp, av, tab2d);
+		if (!add_node(&tmp, (int)n))
+			free_errors(stack, &tmp, av, tab2d);
 		i++;
 	}
 	if (tab2d)
 		free2d(av);
-	*stack = head;
+	*stack = tmp;
 }

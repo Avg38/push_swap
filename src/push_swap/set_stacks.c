@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:53:08 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/18 16:56:59 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 09:41:44 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void	set_push_cost(t_stack *src, t_stack *target)
 
 	len_src = size_stack(src);
 	len_target = size_stack(target);
-
 	while (src)
 	{
 		src->push_cost = src->index;

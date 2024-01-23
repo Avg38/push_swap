@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:50:05 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/18 15:33:18 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 09:43:02 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_stack	*find_cheapest(t_stack *stack)
 	while (stack != NULL)
 	{
 		if (stack->cheapest == true)
-			return stack;
+			return (stack);
 		stack = stack->next;
 	}
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:48:27 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/18 13:13:19 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 09:42:01 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ int	main(int argc, char **argv)
 			sort_stack(&a, &b);
 	}
 	free_stack(&a);
+	free_stack(&b);
 	return (0);
 }
 
 void	display_stack(t_stack *stack)
 {
-	t_stack *cur;
+	t_stack	*cur;
 
 	cur = stack;
 	while (cur)

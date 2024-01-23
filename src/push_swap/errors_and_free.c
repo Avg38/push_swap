@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:59:02 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/17 15:39:10 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/23 09:54:35 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,12 @@ void	free_stack(t_stack **stack)
 	(*stack) = NULL;
 }
 
-void	free_errors(t_stack **stack, char **argv, bool tab2d)
+void	free_errors(t_stack **stack, t_stack **head, char **argv, bool tab2d)
 {
 	if (tab2d)
 		free2d(argv);
 	free_stack(stack);
+	free_stack(head);
 	ft_printf("Error\n");
 	exit(EXIT_FAILURE);
 }
