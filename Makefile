@@ -1,6 +1,5 @@
 NAME = push_swap
 NAME_BONUS = checker
-CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
@@ -45,23 +44,24 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
-%.o: src/%.c include/push_swap.h
-	@$(CC) $(CFLAGS) -g3 -c $< -o $@
+.c.o:	include/push_swap.h
+	@gcc ${CFLAGS} -g3 -c $< -o $@
 
 $(NAME): $(OBJS) include/push_swap.h
-	@$(CC) $(CFLAGS) -g3 -o $@ $^
+	@gcc $(CFLAGS) -g3 -o $@ $^
 
 $(NAME_BONUS): $(OBJS_BONUS) include/push_swap.h
-	@$(CC) $(CFLAGS) -g3 -o $@ $^
+	@gcc $(CFLAGS) -g3 -o $@ $^
 
 bonus : $(NAME_BONUS)
 
 clean:
-	$(RM) $(OBJS)
-	$(RM) $(OBJS_BONUS)
+	@$(RM) $(OBJS)
+	@$(RM) $(OBJS_BONUS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@$(RM) $(NAME_BONUS)
 
 re: fclean all
 
