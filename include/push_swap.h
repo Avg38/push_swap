@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:34:19 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/29 14:33:56 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:58:07 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,4 @@ int		ft_strcmp(char *s1, char *s2);
 int		exit_programm(t_stack **a, t_stack **b, char *line);
 int		do_commands(t_stack **a, t_stack **b, char *command);
 
-void	display_stack(t_stack *stack);
 #endif
