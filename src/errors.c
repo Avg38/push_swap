@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:59:02 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/23 13:24:24 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:04:44 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ void	free_stack(t_stack **stack)
 	if (!(*stack))
 		return ;
 	current = *stack;
-	while (current->next != NULL)
+	while (current != NULL)
 	{
 		tmp = current->next;
 		free(current);
 		current = tmp;
 	}
-	(*stack) = NULL;
+	*stack = NULL;
 }
 
 void	free_errors(t_stack **stack, char **argv, bool tab2d)

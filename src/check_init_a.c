@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:58:14 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/23 13:30:06 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:32:03 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	check_init_a(t_stack **stack, char **av, bool tab2d)
 	int		i;
 
 	i = 0;
+	if (!av)
+		return ;
 	while (av[i])
 	{
 		if (error_syntax(av[i]))

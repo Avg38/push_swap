@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:21:37 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/23 13:26:48 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:33:46 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,16 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	exit_programm(t_stack **a, t_stack **b)
+int	exit_programm(t_stack **a, t_stack **b, char *line)
 {
 	if (stack_sorted(*a))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+	free(line);
 	free_stack(a);
 	free_stack(b);
+	return (0);
 }
 
 int	do_commands(t_stack **a, t_stack **b, char *command)
@@ -84,9 +86,8 @@ int	main(int ac, char **av)
 			free_stack(&b);
 			free_errors(&a, av, false);
 		}
+		free(line);
 		line = get_next_line(0);
 	}
-	free(line);
-	exit_programm(&a, &b);
-	return (0);
+	return (exit_programm(&a, &b, line));
 }
