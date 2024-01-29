@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:03:14 by avialle-          #+#    #+#             */
-/*   Updated: 2024/01/23 13:19:33 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:48:00 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static char	*extract_line(char *str, int *i, char sep)
 	int		j;
 	char	*word;
 
+	word = NULL;
 	while (str[*i] && str[*i] == sep)
 		(*i)++;
 	j = *i;
